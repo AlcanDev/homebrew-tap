@@ -8,7 +8,7 @@ class Korva < Formula
   on_macos do
     on_arm do
       url "https://github.com/AlcanDev/korva/releases/download/v0.1.0/korva_Darwin_arm64.tar.gz"
-      sha256 "placeholder_sha256_arm64_macos"
+      sha256 "50c434d7320530ad939521bc38eecdd6538d168a6a1214cb221e3f45f3ec7201"
     end
     on_intel do
       url "https://github.com/AlcanDev/korva/releases/download/v0.1.0/korva_Darwin_amd64.tar.gz"
