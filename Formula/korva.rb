@@ -5,13 +5,13 @@
 class Korva < Formula
   desc "AI ecosystem CLI for enterprise development teams"
   homepage "https://korva.dev"
-  version "1.36.4"
+  version "1.36.5"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/alcandev/korva/releases/download/v1.36.4/korva_1.36.4_darwin_amd64.tar.gz"
-      sha256 "eccf4931e8891763845bd42fd24751f26f9b8f4eceff0177c0195aa6966a0fde"
+      url "https://github.com/alcandev/korva/releases/download/v1.36.5/korva_1.36.5_darwin_amd64.tar.gz"
+      sha256 "d0c9641300995f2a0d21c09d29b21c80f3e6ef392dcf41303d0ad6dde61e821e"
 
       define_method(:install) do
         bin.install "korva"
@@ -23,8 +23,8 @@ class Korva < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/alcandev/korva/releases/download/v1.36.4/korva_1.36.4_darwin_arm64.tar.gz"
-      sha256 "06c340da219b4a17ac0945bcf5708a75a32f262bc01f4802b051533a3cfe94d3"
+      url "https://github.com/alcandev/korva/releases/download/v1.36.5/korva_1.36.5_darwin_arm64.tar.gz"
+      sha256 "92ccb29d90b09592bd631d264281baa1b39e51669a55185d6045e4877efb3f6c"
 
       define_method(:install) do
         bin.install "korva"
@@ -39,8 +39,8 @@ class Korva < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/alcandev/korva/releases/download/v1.36.4/korva_1.36.4_linux_amd64.tar.gz"
-      sha256 "2c43846a389c2171e0ecb617406d02235ab5964b0e7f0aab75e3106511ad7804"
+      url "https://github.com/alcandev/korva/releases/download/v1.36.5/korva_1.36.5_linux_amd64.tar.gz"
+      sha256 "10117d8857c5f34335c8ebb8a2e4169151f6c6c4144c0cab6200519f69f38f4c"
       define_method(:install) do
         bin.install "korva"
         bin.install "korva-vault"
@@ -51,8 +51,8 @@ class Korva < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/alcandev/korva/releases/download/v1.36.4/korva_1.36.4_linux_arm64.tar.gz"
-      sha256 "1d0a5bd2076a62f1a8da2a4ffaf847e0046a82e1d5c81f14c8d0dad73c421185"
+      url "https://github.com/alcandev/korva/releases/download/v1.36.5/korva_1.36.5_linux_arm64.tar.gz"
+      sha256 "5af0f6640e34e545e2fc6a1be8f5b024956867c5f9b800051de39730e64df0b8"
       define_method(:install) do
         bin.install "korva"
         bin.install "korva-vault"
