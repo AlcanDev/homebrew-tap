@@ -5,13 +5,13 @@
 class Korva < Formula
   desc "AI ecosystem CLI for enterprise development teams"
   homepage "https://korva.dev"
-  version "1.36.3"
+  version "1.36.4"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/alcandev/korva/releases/download/v1.36.3/korva_1.36.3_darwin_amd64.tar.gz"
-      sha256 "6b558ed65f16944390ac0e388194429bb67dd334be0e3e87f70b10e0efdb54b9"
+      url "https://github.com/alcandev/korva/releases/download/v1.36.4/korva_1.36.4_darwin_amd64.tar.gz"
+      sha256 "eccf4931e8891763845bd42fd24751f26f9b8f4eceff0177c0195aa6966a0fde"
 
       define_method(:install) do
         bin.install "korva"
@@ -23,8 +23,8 @@ class Korva < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/alcandev/korva/releases/download/v1.36.3/korva_1.36.3_darwin_arm64.tar.gz"
-      sha256 "08e3f55daa29a71236362bb4a887fec65ad7c89df5edb609e7c4de5003c9f90c"
+      url "https://github.com/alcandev/korva/releases/download/v1.36.4/korva_1.36.4_darwin_arm64.tar.gz"
+      sha256 "06c340da219b4a17ac0945bcf5708a75a32f262bc01f4802b051533a3cfe94d3"
 
       define_method(:install) do
         bin.install "korva"
@@ -39,8 +39,8 @@ class Korva < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/alcandev/korva/releases/download/v1.36.3/korva_1.36.3_linux_amd64.tar.gz"
-      sha256 "22a5746682892cd386ca25ca8767fb7f972e4e8b62dd19120f0c5a8bef33b88e"
+      url "https://github.com/alcandev/korva/releases/download/v1.36.4/korva_1.36.4_linux_amd64.tar.gz"
+      sha256 "2c43846a389c2171e0ecb617406d02235ab5964b0e7f0aab75e3106511ad7804"
       define_method(:install) do
         bin.install "korva"
         bin.install "korva-vault"
@@ -51,8 +51,8 @@ class Korva < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/alcandev/korva/releases/download/v1.36.3/korva_1.36.3_linux_arm64.tar.gz"
-      sha256 "0e1db7a7db68497f1ecf08ba85214474941bce2651004b0c2189dac581728969"
+      url "https://github.com/alcandev/korva/releases/download/v1.36.4/korva_1.36.4_linux_arm64.tar.gz"
+      sha256 "1d0a5bd2076a62f1a8da2a4ffaf847e0046a82e1d5c81f14c8d0dad73c421185"
       define_method(:install) do
         bin.install "korva"
         bin.install "korva-vault"
@@ -62,6 +62,31 @@ class Korva < Formula
         fish_completion.install "completions/korva.fish"
       end
     end
+  end
+
+  def caveats
+    <<~EOS
+      Korva Vault is a background service that stores AI memory locally.
+
+      Start it now (and automatically at login):
+        brew services start korva
+
+      Then finish setup (run once per machine):
+        korva init --admin --owner you@example.com
+        korva setup --all --global
+
+      Open the dashboard:
+        open http://localhost:7437
+
+      Docs: https://korva.dev/docs/getting-started
+    EOS
+  end
+
+  service do
+    run [opt_bin/"korva-vault", "--mode=http"]
+    keep_alive true
+    log_path var/"log/korva-vault.log"
+    error_log_path var/"log/korva-vault.log"
   end
 
   test do
